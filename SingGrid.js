@@ -11,7 +11,6 @@ function SingGrid(table){
     this.colModels = [];
     this.datatype = "local";
     this.tabla = table;
-    this.colNames = [];
     this.viewrecords = true;
     this.numrows = 10;
     //Obtener la fila seleccionada
@@ -129,15 +128,21 @@ function SingGrid(table){
     // Display
     
     this.displayGrid = function(){
-        jQuery(this.tabla).jqGrid({
-            datatype: this.datatype,
-            colNames: this.colNames,
-            colModel: this.colModels,
-            rowNum:this.numrows,
-            viewrecords:this.viewrecords,
-        loadError : function(xhr, st, str){
-            alert('Ha ocurrido un error al traer datos de Colaborador..','Aviso');
+		if(this.colNames<1 || this.colModel<1 ){
+			if(console && 'log' in console)
+			console.log("Not able to display a grid");
         }
-        });
-    }
+        else{
+			jQuery(this.tabla).jqGrid({
+				datatype: this.datatype,
+				colNames: this.colNames,
+				colModel: this.colModels,
+				rowNum:this.numrows,
+				viewrecords:this.viewrecords,
+				loadError : function(xhr, st, str){
+					alert('Ha ocurrido un error al traer datos de Colaborador..','Aviso');
+				}
+			});
+		}
+	}
 };
