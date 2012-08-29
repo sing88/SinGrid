@@ -139,7 +139,7 @@ SingGrid.prototype.displayGrid = function() {
             rowNum: this.numrows,
             viewrecords: this.viewrecords,
             loadError: function(xhr, st, str) {
-                alert('Ha ocurrido un error al traer datos de Colaborador..', 'Aviso');
+                alert('Ha ocurrido un error ...', 'Aviso');
             }
         });
     }

@@ -28,7 +28,7 @@ jQuery(document).ready(function(){
         rowNum: 10,
         viewrecords: true,
         loadError: function(xhr, st, str) {
-            alert('Ha ocurrido un error al traer datos de Colaborador..', 'Aviso');
+            alert('Ha ocurrido un error ...', 'Aviso');
         }
     });
         
