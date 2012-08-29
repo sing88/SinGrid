@@ -1,13 +1,47 @@
 jQuery(document).ready(function(){
-   var tabla = new SingGrid('#tblSingGrid');
-   tabla.addColumn('Id');
-   tabla.addColumn('Nombre');
-   tabla.addColumn('Apellidos');
-   tabla.addColumn('Direccion');
-   tabla.addModel({name:'id',index:'id',width:55});
-   tabla.addModel({name:'Nombre',index:'Nombre',width:100});
-   tabla.addModel({name:'Apellidos',index:'Apellidos',width:100});
-   tabla.addModel({name:'Direccion',index:'Direccion',width:100});
-   tabla.setDataType('local');
-   tabla.displayGrid();
+    
+//  Usando jqGrid
+
+    jQuery('#tblSingGrid').jqGrid({
+        datatype: 'local',
+        colNames: ['id','Nombre','Apellidos','Direccion'],
+        colModel: [{
+            name:'id',
+            index:'id',
+            width:55
+        },
+        {
+            name:'Nombre',
+            index:'Nombre',
+            width:100
+        },
+        {
+            name:'Apellidos',
+            index:'Apellidos',
+            width:100
+        },
+        {
+            name:'Direccion',
+            index:'Direccion',
+            width:100
+        }],
+        rowNum: 10,
+        viewrecords: true,
+        loadError: function(xhr, st, str) {
+            alert('Ha ocurrido un error al traer datos de Colaborador..', 'Aviso');
+        }
+    });
+        
+//  Usando SingGrid
+
+    var tabla2 = new SingGrid('#tblSingGrid2');
+    tabla2.addColumn('Id',{name:'id',index:'id',width:55});
+    tabla2.addColumn('Nombre',{name:'Nombre',index:'Nombre',width:100});
+    tabla2.addColumn('Apellidos',{name:'Apellidos',index:'Apellidos', width:100});
+    tabla2.addColumn('Direccion',{name:'Direccion',index:'Direccion', width:100});
+    tabla2.setDataType('local');
+    tabla2.displayGrid();
+   
+   
+   
 });
